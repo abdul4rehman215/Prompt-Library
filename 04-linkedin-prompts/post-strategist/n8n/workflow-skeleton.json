@@ -1,0 +1,160 @@
+{
+  "name": "Aura Cyber LinkedIn Pack Generator - Portable HTTP Version",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a2d6b8cb-6d61-4fcb-9f8f-0f6fb4b6b001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const systemPrompt = `You are Aura-Cyber-Content-Architect, a high-end LinkedIn ghostwriter and positioning strategist for Abdul Rehman. Abdul is a hands-on, early-career cybersecurity professional focused on SOC operations, SIEM and detection engineering, incident response workflows, Linux security, AWS monitoring and visibility, security automation, and AI-assisted blue-team workflows. He builds from scratch, documents deeply, and is growing in n8n, prompt engineering, and agentic workflow design for security operations.\\n\\nYour task: turn raw input into a sharp, credible, authority-building LinkedIn post.\\n\\nMode selection:\\n- Mode A: Recruiter-Facing for employability, role readiness, hands-on credibility, or career momentum.\\n- Mode B: GitHub-to-LinkedIn for repo, README, architecture, and project-documentation-heavy input.\\n- Mode C: General Authority Post for insights, lessons, workflow thinking, technical breakdowns, or practical security opinions.\\n\\nIf multiple modes fit: prefer Mode B for repo/project-heavy input, prefer Mode A for hiring visibility, otherwise use Mode C.\\n\\nRules: keep the writing sharp, practical, technical but readable, confident, honest, and premium without sounding fake. Never fake seniority, fake production impact, or exaggerate labs into enterprise incidents. Never use generic fluff like game-changer, supercharge, buckle up, thought leader, or next-level.\\n\\nAlways preserve Abdul's real brand: hands-on cybersecurity builder, SOC and blue-team focused, workflow-thinking over tool-listing, documentation-first, build-from-scratch mindset, practical with Wazuh, TheHive, MISP, Cortex, Sysmon, CloudTrail, Linux hardening, alert triage, case handling, AWS visibility, and growing in AI automation for security operations through n8n, prompt engineering, and agentic workflows.\\n\\nReturn ONLY valid JSON with this exact shape: {\\\"selected_mode\\\":\\\"Mode A: Recruiter-Facing | Mode B: GitHub-to-LinkedIn | Mode C: General Authority Post\\\",\\\"strategic_angle\\\":\\\"string\\\",\\\"hook_options\\\":[\\\"string\\\",\\\"string\\\",\\\"string\\\"],\\\"master_post\\\":\\\"string\\\",\\\"hashtags\\\":[\\\"string\\\",\\\"string\\\",\\\"string\\\"],\\\"media_suggestion\\\":\\\"string\\\",\\\"cta_type\\\":\\\"discussion | recruiter-signal | workflow | automation\\\",\\\"confidence_note\\\":\\\"string\\\"}.`; return [{ json: { raw_context: 'Built an AI-driven SOC alert triage workflow using Wazuh alerts, an LLM, and n8n to turn noisy security alerts into analyst-ready summaries with risk context and recommended next steps.', optional_goal: 'auto', optional_audience: 'recruiters, security practitioners', optional_cta_style: 'workflow', source_type: 'github_readme', project_title: 'AI-Driven SOC Alert Triage Workflow', project_stack: 'Wazuh, n8n, OpenAI, SOC automation', project_link: 'https://github.com/abdul4rehman215/example', extra_notes: 'Keep it grounded. No fake enterprise claims. Position it as hands-on automation for security operations.', system_prompt: systemPrompt } }];"
+      },
+      "id": "7a06d5c1-3342-4aa2-80be-6fd74087d002",
+      "name": "Seed Variables",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const j = $json; const userPrompt = `Use the following input variables to generate the LinkedIn content pack.\\n\\nRAW CONTEXT\\n${j.raw_context}\\n\\nOPTIONAL GOAL\\n${j.optional_goal || 'auto'}\\n\\nOPTIONAL AUDIENCE\\n${j.optional_audience || 'auto'}\\n\\nOPTIONAL CTA STYLE\\n${j.optional_cta_style || 'auto'}\\n\\nSOURCE TYPE\\n${j.source_type || 'unknown'}\\n\\nPROJECT TITLE\\n${j.project_title || ''}\\n\\nPROJECT STACK\\n${j.project_stack || ''}\\n\\nPROJECT LINK\\n${j.project_link || ''}\\n\\nEXTRA NOTES\\n${j.extra_notes || ''}\\n\\nINSTRUCTIONS\\n- Choose the best mode automatically unless optional_goal explicitly specifies one.\\n- If the input is GitHub, README, architecture, or project-documentation heavy, strongly prefer Mode B.\\n- If the input is career-facing, milestone-facing, or recruiter-signal heavy, strongly prefer Mode A.\\n- Otherwise use Mode C.\\n- Keep the writing technically credible and practical.\\n- Do not overclaim.\\n- Return JSON only.`; return [{ json: { ...j, user_prompt: userPrompt } }];"
+      },
+      "id": "a0a7e07e-e779-4209-a3aa-83dd1d563003",
+      "name": "Build User Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "={{ ({ Authorization: 'Bearer ' + ($env.OPENAI_API_KEY || 'REPLACE_ME'), 'Content-Type': 'application/json' }) }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ ({ model: 'gpt-5-mini', response_format: { type: 'json_object' }, temperature: 0.7, messages: [ { role: 'system', content: $json.system_prompt }, { role: 'user', content: $json.user_prompt } ] }) }}",
+        "options": {}
+      },
+      "id": "b0f8578c-8ddb-4b8f-85fa-6019273cd004",
+      "name": "OpenAI Chat Completions",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1030,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const content = $json.choices?.[0]?.message?.content ?? ''; let parsed; try { parsed = JSON.parse(content); } catch (error) { parsed = { selected_mode: 'Mode C: General Authority Post', strategic_angle: 'Fallback parse path used because the model did not return strict JSON.', hook_options: ['Need manual review', 'Need manual review', 'Need manual review'], master_post: content || 'No content returned from model.', hashtags: ['#CyberSecurity', '#SOC', '#SecurityAutomation'], media_suggestion: 'Attach a clean workflow or architecture visual.', cta_type: 'discussion', confidence_note: `Low confidence: fallback parser used. ${error.message}` }; } return [{ json: parsed }];"
+      },
+      "id": "4b5c2fe7-329a-4378-bf50-b59dd7833005",
+      "name": "Parse Model JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1290,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const j = $json; return [{ json: { selected_mode: j.selected_mode, strategic_angle: j.strategic_angle, hook_1: j.hook_options?.[0] ?? '', hook_2: j.hook_options?.[1] ?? '', hook_3: j.hook_options?.[2] ?? '', hook_options: j.hook_options ?? [], master_post: j.master_post ?? '', hashtags: j.hashtags ?? [], hashtags_joined: Array.isArray(j.hashtags) ? j.hashtags.join(' ') : '', media_suggestion: j.media_suggestion ?? '', cta_type: j.cta_type ?? 'discussion', confidence_note: j.confidence_note ?? '' } }];"
+      },
+      "id": "11a65109-67c8-42bc-a736-591173962006",
+      "name": "Flatten Content Pack",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1550,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Seed Variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Seed Variables": {
+      "main": [
+        [
+          {
+            "node": "Build User Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build User Prompt": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Chat Completions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Completions": {
+      "main": [
+        [
+          {
+            "node": "Parse Model JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Model JSON": {
+      "main": [
+        [
+          {
+            "node": "Flatten Content Pack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "versionId": "94f8a8d2-58f5-4a4f-bb7f-58f6d7c3e007",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "id": "AuraCyberLinkedInPortableHTTP"
+}

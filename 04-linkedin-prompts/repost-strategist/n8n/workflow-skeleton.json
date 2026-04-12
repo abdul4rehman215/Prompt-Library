@@ -1,0 +1,233 @@
+{
+  "name": "Abdul Rehman - LinkedIn Repost Automation Skeleton",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "45101c3e-8c34-4c41-bd7e-d0ea2bea1eae",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7c07128b-0016-4168-a46d-a6e31ef332ac",
+              "name": "creator_name",
+              "value": "Original Creator",
+              "type": "string"
+            },
+            {
+              "id": "a730a6e0-f84e-41a9-bf0f-9ffbb6a72321",
+              "name": "post_type",
+              "value": "carousel",
+              "type": "string"
+            },
+            {
+              "id": "469ff112-e459-478a-a6cd-9e7a6fd9968a",
+              "name": "source_content",
+              "value": "Paste the source post, screenshot text, carousel OCR, or article excerpt here.",
+              "type": "string"
+            },
+            {
+              "id": "3e1ea134-1577-405e-b362-e560c5cbf16f",
+              "name": "extra_context",
+              "value": "Angle this toward SOC operations, security automation, recruiter appeal, and premium inbound trust. Keep it practical and non-hype.",
+              "type": "string"
+            },
+            {
+              "id": "d3daa8c9-917a-466a-a325-a94504b8d98d",
+              "name": "objective_bias",
+              "value": "balanced reach + recruiter conversion + premium inbound trust",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "672bb484-938d-4edc-a084-620629ff48b5",
+      "name": "Seed Input",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "prompt": "=You are Cyber-Repost Automation Engine for Abdul Rehman.\n\nAbdul Rehman is an early-career SOC Analyst and Security Automation Builder focused on SOC operations, SIEM monitoring, detection engineering, incident response, Linux security, AWS monitoring, Wazuh, TheHive, MISP, Cortex, Sysmon, MITRE ATT&CK, documentation, and AI automation with n8n.\n\nWrite in Abdul's voice:\n- practical\n- sharp\n- analytical\n- calm\n- credible\n- accessible\n- hands-on\n- workflow-first\n- documentation-first\n- automation-minded\n\nYour goal:\nTransform the source LinkedIn content into a repost package that combines:\n1. viral reach\n2. recruiter conversion\n3. premium inbound trust\n\nCore rules:\n- Add a real cybersecurity, workflow, systems, or automation angle\n- Do not just summarize or praise the original\n- Make Abdul sound hands-on, useful, and technically credible\n- Keep it readable for LinkedIn\n- Reward technical readers, but stay understandable to broader audiences\n- Subtly signal hireability and practical value\n- Never sound needy, salesy, fake-senior, or hype-driven\n- Never invent experience, titles, leadership, or enterprise authority\n- Never use clichés like: game-changer, supercharge, revolutionize, thought leader, unlock the power, next-level\n\nPrefer angles like:\n- alert triage quality\n- signal vs noise\n- detection usefulness\n- investigation workflow\n- Linux or cloud visibility\n- documentation discipline\n- security automation\n- AI-assisted SOC workflows\n- tools vs workflows\n- hype vs implementation\n- visibility vs actionability\n\nReturn valid JSON only in this exact schema:\n{\n  \"strategic_reframe\": \"\",\n  \"hook_options\": {\n    \"analytical\": \"\",\n    \"contrarian\": \"\",\n    \"practical_value\": \"\",\n    \"recruiter_magnet\": \"\",\n    \"clean_viral\": \"\"\n  },\n  \"master_repost\": {\n    \"selected_hook_placeholder\": \"[Choose one hook]\",\n    \"opening\": \"\",\n    \"breakdown_bullets\": [\"\", \"\", \"\"],\n    \"abdul_insight\": \"\",\n    \"opportunity_signal\": \"\",\n    \"appreciation\": \"\",\n    \"cta\": \"\"\n  },\n  \"first_hour_comment_boosters\": [\"\", \"\", \"\"],\n  \"tags_and_reach_play\": {\n    \"hashtags\": [\"\", \"\", \"\", \"\", \"\"],\n    \"tag_targets\": [\"\", \"\", \"\"],\n    \"best_audience\": \"\"\n  }\n}\n\nCreator name: {{$json.creator_name}}\nPost type: {{$json.post_type}}\nSource content: {{$json.source_content}}\nExtra context: {{$json.extra_context}}\nObjective bias: {{$json.objective_bias}}"
+      },
+      "id": "692602df-2f87-4dee-a582-f14d847cf1ff",
+      "name": "Generate Repost Package",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.3,
+      "position": [
+        860,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "id": "4afc6bd5-8f54-4155-bda4-b0267590a823",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        860,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "jsonSchema": "{\n  \"type\": \"object\",\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"strategic_reframe\": {\n      \"type\": \"string\"\n    },\n    \"hook_options\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"analytical\": { \"type\": \"string\" },\n        \"contrarian\": { \"type\": \"string\" },\n        \"practical_value\": { \"type\": \"string\" },\n        \"recruiter_magnet\": { \"type\": \"string\" },\n        \"clean_viral\": { \"type\": \"string\" }\n      },\n      \"required\": [\n        \"analytical\",\n        \"contrarian\",\n        \"practical_value\",\n        \"recruiter_magnet\",\n        \"clean_viral\"\n      ]\n    },\n    \"master_repost\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"selected_hook_placeholder\": { \"type\": \"string\" },\n        \"opening\": { \"type\": \"string\" },\n        \"breakdown_bullets\": {\n          \"type\": \"array\",\n          \"items\": { \"type\": \"string\" },\n          \"minItems\": 3,\n          \"maxItems\": 5\n        },\n        \"abdul_insight\": { \"type\": \"string\" },\n        \"opportunity_signal\": { \"type\": \"string\" },\n        \"appreciation\": { \"type\": \"string\" },\n        \"cta\": { \"type\": \"string\" }\n      },\n      \"required\": [\n        \"selected_hook_placeholder\",\n        \"opening\",\n        \"breakdown_bullets\",\n        \"abdul_insight\",\n        \"opportunity_signal\",\n        \"appreciation\",\n        \"cta\"\n      ]\n    },\n    \"first_hour_comment_boosters\": {\n      \"type\": \"array\",\n      \"items\": { \"type\": \"string\" },\n      \"minItems\": 3,\n      \"maxItems\": 3\n    },\n    \"tags_and_reach_play\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"hashtags\": {\n          \"type\": \"array\",\n          \"items\": { \"type\": \"string\" },\n          \"minItems\": 3,\n          \"maxItems\": 5\n        },\n        \"tag_targets\": {\n          \"type\": \"array\",\n          \"items\": { \"type\": \"string\" },\n          \"minItems\": 1,\n          \"maxItems\": 5\n        },\n        \"best_audience\": { \"type\": \"string\" }\n      },\n      \"required\": [\n        \"hashtags\",\n        \"tag_targets\",\n        \"best_audience\"\n      ]\n    }\n  },\n  \"required\": [\n    \"strategic_reframe\",\n    \"hook_options\",\n    \"master_repost\",\n    \"first_hour_comment_boosters\",\n    \"tags_and_reach_play\"\n  ]\n}"
+      },
+      "id": "94686fc2-820c-463d-8d5f-4d786721f67b",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "482c357a-e352-4adc-8b87-e102d2f6668e",
+              "name": "hook_used",
+              "value": "={{ $json.output.hook_options.analytical }}",
+              "type": "string"
+            },
+            {
+              "id": "63e76e46-d8d8-4e47-95da-f3251ada6480",
+              "name": "linkedin_post_preview",
+              "value": "={{ $json.output.hook_options.analytical + '\\n\\n' + $json.output.master_repost.opening + '\\n\\n• ' + ($json.output.master_repost.breakdown_bullets || []).join('\\n• ') + '\\n\\n' + $json.output.master_repost.abdul_insight + '\\n\\n' + $json.output.master_repost.opportunity_signal + '\\n\\n' + $json.output.master_repost.appreciation + '\\n\\n' + $json.output.master_repost.cta + '\\n\\n' + ($json.output.tags_and_reach_play.hashtags || []).join(' ') }}",
+              "type": "string"
+            },
+            {
+              "id": "e1a77f9d-17af-440c-9a8d-d92d8ec43625",
+              "name": "comment_1",
+              "value": "={{ $json.output.first_hour_comment_boosters[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "51803e48-b254-424b-8bb8-f3c2b907d4e0",
+              "name": "comment_2",
+              "value": "={{ $json.output.first_hour_comment_boosters[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "59c45ea1-0ff4-4a88-bfe4-761ba14cf746",
+              "name": "comment_3",
+              "value": "={{ $json.output.first_hour_comment_boosters[2] }}",
+              "type": "string"
+            },
+            {
+              "id": "e21eac83-0d48-4e16-bf27-cc0b33298ec3",
+              "name": "hashtags",
+              "value": "={{ ($json.output.tags_and_reach_play.hashtags || []).join(', ') }}",
+              "type": "string"
+            },
+            {
+              "id": "f665722e-764d-47cb-b714-b59d0d6d64b6",
+              "name": "best_audience",
+              "value": "={{ $json.output.tags_and_reach_play.best_audience }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9dd311a3-d2e9-4ece-a0aa-22f231497b22",
+      "name": "Build Preview",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1240,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Seed Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Seed Input": {
+      "main": [
+        [
+          {
+            "node": "Generate Repost Package",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Repost Package",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Generate Repost Package",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Repost Package": {
+      "main": [
+        [
+          {
+            "node": "Build Preview",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "pinData": {},
+  "versionId": "4920f1ae-ad05-42e6-9128-b1da27d6d61b",
+  "triggerCount": 0,
+  "tags": []
+}

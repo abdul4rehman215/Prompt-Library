@@ -149,11 +149,11 @@ PROMPT-LIBRARY-main/
 
 | Module | What it does | Best for |
 |---|---|---|
-| `01-prompt-engineering` | Improves weak or vague prompts | Prompt builders and AI power users |
-| `02-critique-and-evaluation` | Reviews outputs against a stricter quality bar | QA passes before publishing |
-| `03-github-readme-prompts` | Generates top-level and folder-level READMEs | Open-source repos, portfolios, DX docs |
-| `04-linkedin-prompts` | Creates LinkedIn posts, reposts, and optional automated content pipelines | Technical creators, job seekers, DevRel-style positioning |
-| `PERSONALIZATION-GUIDE.md` | Helps adapt identity-based prompts for another person | Reuse without leaking old names or proof signals |
+| [01 Prompt Engineering](./01-prompt-engineering/) | Improves weak or vague prompts | Prompt builders and AI power users |
+| [02 Critique and Evaluation](./02-critique-and-evaluation/) | Reviews outputs against a stricter quality bar | QA passes before publishing |
+| [03 GitHub README Prompts](./03-github-readme-prompts/) | Generates top-level and folder-level READMEs | Open-source repos, portfolios, DX docs |
+| [04 LinkedIn Prompts](./04-linkedin-prompts/) | Creates LinkedIn posts, reposts, and optional automated content pipelines | Technical creators, job seekers, DevRel-style positioning |
+| [Personalization Guide](./PERSONALIZATION-GUIDE.md) | Helps adapt identity-based prompts for another person | Reuse without leaking old names or proof signals |
 
 ## Who this repository is for
 

@@ -1,6 +1,8 @@
 # Prompt Library
 
+<!--
 ![Prompt Library hero demo placeholder — replace with `./assets/hero-prompt-library-demo.gif` showing: folder selection -> prompt copy -> LLM output -> optional n8n workflow run -> final LinkedIn/GitHub-ready result](./assets/hero-prompt-library-demo.gif)
+-->
 
 ![Docs](https://img.shields.io/badge/docs-zero--to--hero-blue)
 ![Type](https://img.shields.io/badge/type-open--source%20prompt%20library-111827)
@@ -9,9 +11,16 @@
 ![Models](https://img.shields.io/badge/models-chatgpt%20%7C%20claude%20%7C%20gemini%20%7C%20openai-10b981)
 ![Audience](https://img.shields.io/badge/audience-AI%20builders%20%26%20technical%20creators-7c3aed)
 ![Status](https://img.shields.io/badge/status-active%20curated-brightgreen)
+<!--
 ![License](https://img.shields.io/badge/license-unspecified-lightgrey)
-
+-->
+<!--
 > **Suggested hero asset:** A 12–18 second cinematic GIF recorded in dark mode that shows: opening the repository, selecting a workflow folder, copying a prompt block, pasting it into an LLM, and optionally running the `n8n` workflow to produce a structured output preview.
+-->
+
+> **Created by [`Abdul Rehman`](https://www.linkedin.com/in/abdul4rehman215/) and [`Muhammad Schees Khan`](https://www.linkedin.com/in/muhammadschees/) ([`msk0442`](https://github.com/msk0442)).**  
+> **Primary prompt authorship and core content contribution:** [**`Muhammad Schees Khan`**](https://www.linkedin.com/in/muhammadschees/).  
+> **Repository direction, organization, GitHub publishing, README writing, folder structure, and usage guides:** [**`Abdul Rehman`**](https://www.linkedin.com/in/abdul4rehman215/).
 
 ## Why this repository exists
 
@@ -432,6 +441,7 @@ The included post workflow already contains a fallback parser. The repost workfl
 - `project_stack`
 - `source_content`
 
+<!--
 ### 6. Mermaid diagrams do not render on GitHub
 
 **Cause:** the fenced block is malformed.
@@ -447,6 +457,19 @@ and ends with:
 ````md
 ```
 ````
+-->
+
+## Credits and attribution
+
+This public repository is the result of a real collaboration.
+
+The **main credit for the prompt content** goes to **[**`Muhammad Schees Khan`**](https://www.linkedin.com/in/muhammadschees/)**, also on GitHub as **[**`msk0442`**](https://github.com/msk0442)**. He contributed the prompt material itself, helped shape the practical use cases behind it, and did the heavy lifting on the actual prompt creation.
+
+My role, as **[**`Abdul Rehman`**](https://www.linkedin.com/in/abdul4rehman215/)**, was to help shape the repo direction and purpose, then turn that work into a polished public repository by organizing the folders, structuring the project on GitHub, writing the README and guides, and making the library easier to explore and reuse.
+
+In plain words: **Muhammad Schees built the core prompt content; Abdul Rehman packaged, organized, documented, and published it.**
+
+> Thanks to Muhammad Schees for the core content work behind this repository, and for contributing the prompts that made this library possible.
 
 ## Maintainer notes
 

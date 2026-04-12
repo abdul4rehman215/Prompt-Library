@@ -1,5 +1,7 @@
 # Prompt Library
 
+> **Created by** [Abdul Rehman](https://www.linkedin.com/in/abdul4rehman215) · [GitHub @abdul4rehman215](https://github.com/abdul4rehman215) &nbsp;|&nbsp; [Muhammad Saad Khan](https://www.linkedin.com/in/msk0442) · [GitHub @msk0442](https://github.com/msk0442)
+
 ![Prompt Library hero demo placeholder — replace with `./assets/hero-prompt-library-demo.gif` showing: folder selection -> prompt copy -> LLM output -> optional n8n workflow run -> final LinkedIn/GitHub-ready result](./assets/hero-prompt-library-demo.gif)
 
 ![Docs](https://img.shields.io/badge/docs-zero--to--hero-blue)
@@ -41,6 +43,7 @@ In plain terms: **the problem is prompt chaos; the solution is a reusable, workf
 - [Deep-dive: core logic and main features](#deep-dive-core-logic-and-main-features)
 - [Troubleshooting and FAQ](#troubleshooting-and-faq)
 - [Maintainer notes](#maintainer-notes)
+- [Contributors](#contributors)
 - [License](#license)
 
 ## How it works
@@ -465,6 +468,46 @@ Recommended extension ideas:
 - add a `CONTRIBUTING.md` if other people will submit prompt variants
 - add an `examples/` folder with before-and-after input/output pairs
 - add `.env.example` only if you want self-hosted automation to be a first-class path
+
+## Contributors
+
+This project is the result of a close collaboration between two contributors with distinct roles.
+
+---
+
+### Muhammad Saad Khan — Prompt Author & Content Architect
+
+[![GitHub](https://img.shields.io/badge/GitHub-msk0442-181717?logo=github)](https://github.com/msk0442)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad%20Saad%20Khan-0077B5?logo=linkedin)](https://www.linkedin.com/in/msk0442)
+
+Muhammad Saad Khan is an AI builder and content automation specialist. He is the **primary author of every prompt** in this library. His work spans AI-powered LinkedIn content generation, stop-motion animation from text descriptions, automated reel creation, Quranic–quantum concept work, and multi-format social media generation tools.
+
+His contributions to this repository include:
+
+- Designing, writing, and iterating on all prompt files across every module
+- Building the reasoning structure behind each prompt's purpose, instruction set, and expected output
+- Contributing the `n8n` workflow logic and JSON schema design for the LinkedIn post and repost pipelines
+- Providing ongoing prompt refinement guidance based on real LLM testing
+
+> The ideas and goals for the types of prompts this library needed came from Abdul. The actual writing, engineering, and delivery of every prompt came from Muhammad.
+
+---
+
+### Abdul Rehman — Repository Organizer & Documentation Lead
+
+[![GitHub](https://img.shields.io/badge/GitHub-abdul4rehman215-181717?logo=github)](https://github.com/abdul4rehman215)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Abdul%20Rehman-0077B5?logo=linkedin)](https://www.linkedin.com/in/abdul4rehman215)
+
+Abdul Rehman originated the concept, defined the use cases and prompt categories, and is responsible for the entire public-facing structure of this repository. His contributions include:
+
+- Conceptualizing the prompt categories and defining the purpose of each module
+- Organizing all files and folders into the workflow-driven structure you see today
+- Writing all repository-level and folder-level README documentation
+- Maintaining the public GitHub repository and keeping it navigable for new users
+
+---
+
+> **Credit note:** The content of this library — the prompts themselves — was authored and crafted entirely by [Muhammad Saad Khan](https://github.com/msk0442). The organizational framework, documentation, and GitHub repository structure were built by [Abdul Rehman](https://github.com/abdul4rehman215). Both contributions were essential to making this a usable, public resource.
 
 ## License
 

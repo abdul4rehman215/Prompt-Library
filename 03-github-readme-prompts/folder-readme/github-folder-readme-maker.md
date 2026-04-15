@@ -1,7 +1,5 @@
 # GitHub Folder README Maker
 
-**Original source:** `03-github-master-prompts/github-subfolder-mainreadme/GitHub Repo Folder Readme Maker Master Prompt.md`
-
 ## Purpose
 A subfolder-level README generator for documenting a specific module, feature folder, or internal package.
 

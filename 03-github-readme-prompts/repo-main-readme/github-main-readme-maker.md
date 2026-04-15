@@ -1,7 +1,5 @@
 # GitHub Main README Maker
 
-**Original source:** `03-github-master-prompts/github-repo-mainreadme/GitHub Repo Main Readme Maker Master Prompt.md`
-
 ## Purpose
 A repository-level README generator focused on producing a strong top-level project README.
 

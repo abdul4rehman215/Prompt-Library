@@ -1,7 +1,5 @@
 # AI Prompt Engineer Chat
 
-**Original source:** `01-prompt-engineer/AI Prompt Engineer Chat.md`
-
 ## Purpose
 A general-purpose prompt engineering assistant that helps design, refine, and upgrade prompts for a wide range of AI use cases.
 

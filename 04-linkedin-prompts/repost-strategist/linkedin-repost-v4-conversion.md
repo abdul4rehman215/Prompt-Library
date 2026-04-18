@@ -1,7 +1,5 @@
 # LinkedIn Repost Strategist v4 - Conversion
 
-**Original source:** `04-linkedin-master-prompts/linkedin-repost/Linkedin Repost Maker Master Prompt v4 recruiter-conversion version next, tuned specifically for landing interviews, freelance inquiries, and inbound opportunities..md`
-
 ## Purpose
 A repost version tuned to turn attention into interviews, freelance inquiries, and inbound opportunities.
 

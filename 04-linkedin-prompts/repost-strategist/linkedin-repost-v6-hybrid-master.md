@@ -1,7 +1,5 @@
 # LinkedIn Repost Strategist v6 - Hybrid Master
 
-**Original source:** `04-linkedin-master-prompts/linkedin-repost/Linkedin Repost Maker Master Prompt v6 hybrid-master prompt that combines viral reach + recruiter conversion + premium client positioning into one final version..md`
-
 ## Purpose
 The most complete repost version, blending reach, recruiter conversion, and premium inbound positioning.
 

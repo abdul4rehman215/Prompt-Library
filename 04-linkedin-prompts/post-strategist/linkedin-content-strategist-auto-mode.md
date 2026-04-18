@@ -1,7 +1,5 @@
 # LinkedIn Content Strategist - Auto Mode
 
-**Original source:** `04-linkedin-master-prompts/linkedin-post-strategist/LinkedIn Content Post Strategist single master prompt with automatic mode switching.md`
-
 ## Purpose
 A multi-mode LinkedIn content prompt that automatically adapts based on the type of content task you give it.
 
